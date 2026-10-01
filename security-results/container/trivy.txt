@@ -60,7 +60,7 @@ Report Summary
 ├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
 │ home/node/app/node_modules/body-parser/package.json                              │ node-pkg │        1        │    -    │
 ├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
-│ home/node/app/node_modules/brace-expansion/package.json                          │ node-pkg │        3        │    -    │
+│ home/node/app/node_modules/brace-expansion/package.json                          │ node-pkg │        5        │    -    │
 ├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
 │ home/node/app/node_modules/braces/node_modules/extend-shallow/package.json       │ node-pkg │        0        │    -    │
 ├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
@@ -918,7 +918,7 @@ Report Summary
 ├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
 │ usr/local/lib/node_modules/npm/node_modules/binary-extensions/package.json       │ node-pkg │        0        │    -    │
 ├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
-│ usr/local/lib/node_modules/npm/node_modules/brace-expansion/package.json         │ node-pkg │        3        │    -    │
+│ usr/local/lib/node_modules/npm/node_modules/brace-expansion/package.json         │ node-pkg │        5        │    -    │
 ├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
 │ usr/local/lib/node_modules/npm/node_modules/cacache/package.json                 │ node-pkg │        0        │    -    │
 ├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
@@ -1259,7 +1259,7 @@ Legend:
 
 Node.js (node-pkg)
 ==================
-Total: 50 (HIGH: 42, CRITICAL: 8)
+Total: 54 (HIGH: 46, CRITICAL: 8)
 
 ┌─────────────────────────────────────┬─────────────────────┬──────────┬────────┬───────────────────┬──────────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────┐
 │               Library               │    Vulnerability    │ Severity │ Status │ Installed Version │                      Fixed Version                       │                            Title                             │
@@ -1267,7 +1267,15 @@ Total: 50 (HIGH: 42, CRITICAL: 8)
 │ body-parser (package.json)          │ CVE-2024-45590      │ HIGH     │ fixed  │ 1.18.3            │ 1.20.3                                                   │ body-parser: Denial of Service Vulnerability in body-parser  │
 │                                     │                     │          │        │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-45590                   │
 ├─────────────────────────────────────┼─────────────────────┤          │        ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
-│ brace-expansion (package.json)      │ CVE-2026-13149      │          │        │ 1.1.11            │ 5.0.7, 1.1.16, 2.1.2                                     │ brace-expansion: Brace-expansion: Denial of Service due to   │
+│ brace-expansion (package.json)      │ CVE-2026-102276     │          │        │ 1.1.11            │ 5.0.10, 3.0.7, 2.1.5, 1.1.19                             │ brace-expansion: brace-expansion: Denial of Service via      │
+│                                     │                     │          │        │                   │                                                          │ stack exhaustion from crafted brace patterns...              │
+│                                     │                     │          │        │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-102276                  │
+│                                     ├─────────────────────┤          │        │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-102278     │          │        │                   │ 5.0.11, 3.0.8, 2.1.6, 1.1.20                             │ brace-expansion: brace-expansion: Denial of Service via      │
+│                                     │                     │          │        │                   │                                                          │ uncontrolled recursion in nested brace patterns...           │
+│                                     │                     │          │        │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-102278                  │
+│                                     ├─────────────────────┤          │        │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-13149      │          │        │                   │ 5.0.7, 1.1.16, 2.1.2                                     │ brace-expansion: Brace-expansion: Denial of Service due to   │
 │                                     │                     │          │        │                   │                                                          │ exponential-time complexity                                  │
 │                                     │                     │          │        │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-13149                   │
 │                                     ├─────────────────────┤          │        │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
@@ -1279,7 +1287,15 @@ Total: 50 (HIGH: 42, CRITICAL: 8)
 │                                     │                     │          │        │                   │                                                          │ bypassing the CVE-2026-14257 mitigation                      │
 │                                     │                     │          │        │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-69152                   │
 │                                     ├─────────────────────┤          │        ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
-│                                     │ CVE-2026-13149      │          │        │ 2.0.2             │ 5.0.7, 1.1.16, 2.1.2                                     │ brace-expansion: Brace-expansion: Denial of Service due to   │
+│                                     │ CVE-2026-102276     │          │        │ 2.0.2             │ 5.0.10, 3.0.7, 2.1.5, 1.1.19                             │ brace-expansion: brace-expansion: Denial of Service via      │
+│                                     │                     │          │        │                   │                                                          │ stack exhaustion from crafted brace patterns...              │
+│                                     │                     │          │        │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-102276                  │
+│                                     ├─────────────────────┤          │        │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-102278     │          │        │                   │ 5.0.11, 3.0.8, 2.1.6, 1.1.20                             │ brace-expansion: brace-expansion: Denial of Service via      │
+│                                     │                     │          │        │                   │                                                          │ uncontrolled recursion in nested brace patterns...           │
+│                                     │                     │          │        │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-102278                  │
+│                                     ├─────────────────────┤          │        │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-13149      │          │        │                   │ 5.0.7, 1.1.16, 2.1.2                                     │ brace-expansion: Brace-expansion: Denial of Service due to   │
 │                                     │                     │          │        │                   │                                                          │ exponential-time complexity                                  │
 │                                     │                     │          │        │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-13149                   │
 │                                     ├─────────────────────┤          │        │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤

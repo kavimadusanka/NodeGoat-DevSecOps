@@ -1,0 +1,20 @@
+services:
+  web:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: development
+      PORT: "4000"
+      MONGODB_URI: "mongodb://mongo:27017/nodegoat"
+      SESSION_SECRET: "baseline-lab-only-32-characters-min"
+      SEED_ADMIN_PASSWORD: "BaselineAdmin123!"
+      SEED_USER1_PASSWORD: "BaselineUser1_123!"
+      SEED_USER2_PASSWORD: "BaselineUser2_123!"
+    command: sh -c 'until nc -z -w 2 mongo 27017; do sleep 2; done; node artifacts/db-reset.js && npm start'
+    ports:
+      - "127.0.0.1:4001:4000"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:4.4

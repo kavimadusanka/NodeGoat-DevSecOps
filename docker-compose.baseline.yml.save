@@ -1,0 +1,25 @@
+nano docker-compose.baseline.ymlservices:
+  web:
+    build:
+      context: ./app-baseline
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: development
+      PORT: 4001
+      MONGODB_URI: mongodb://mongo-baseline:27017/nodegoat
+      SESSION_SECRET: ${SESSION_SECRET:?Set SESSION_SECRET in .env}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:?Set SEED_ADMIN_PASSWORD in .env}
+      SEED_USER1_PASSWORD: ${SEED_USER1_PASSWORD:?Set SEED_USER1_PASSWORD in .env}
+      SEED_USER2_PASSWORD: ${SEED_USER2_PASSWORD:?Set SEED_USER2_PASSWORD in .env}
+    command: sh -c "until nc -z -w 2 mongo-baseline 27017; do sleep 2; done; node artifacts/db-reset.js && npm start"
+    ports:
+      - "127.0.0.1:4001:4001"
+    depends_on:
+      - mongo-baseline
+
+  mongo-baseline:
+    image: mongo:4.4
+    user: mongodb
+    expose:
+      - "27017"
+    restart: unless-stopped
