@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   security:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,9 +32,9 @@ jobs:
         run: npm run security:test
 
       - name: SAST - Semgrep
-        uses: semgrep/semgrep@v1
-        with:
-          args: --config security/semgrep.yml --error app
+        run: |
+          pipx install semgrep
+          semgrep scan --config security/semgrep.yml --error app
 
       - name: Dependency scan - npm audit
         working-directory: app

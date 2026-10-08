@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   intentional-failure-demo:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 
@@ -22,6 +22,6 @@ jobs:
           EOF
 
       - name: Prove SAST gate blocks a bad build
-        uses: semgrep/semgrep@v1
-        with:
-          args: --config security/semgrep.yml --error /tmp/security-gate-demo
+        run: |
+          pipx install semgrep
+          semgrep scan --config security/semgrep.yml --error /tmp/security-gate-demo
